@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+/* styles.css or inside a <style jsx global> block */
+.navbar {
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  padding: 16px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #7c3aed; /* violet color */
+}
+
+.navbar-links {
+  display: flex;
+  gap: 24px;
+}
+
+.navbar-links a {
+  font-size: 14px;
+  text-decoration: none;
+  color: #4b5563; /* gray color */
+  transition: color 0.3s ease;
+}
+
+.navbar-links a:hover {
+  color: #7c3aed;
+}
+
+.navbar-button {
+  background-color: #7c3aed;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.navbar-button:hover {
+  background-color: #6d28d9;
+}
+.apply{
+  background-color: #6d28d9;
+}
+/* Custom input field styling */
+.custom-date-input {
+  padding: 10px;
+  border-radius: 8px;
+  width: 100%;
+}
+
+/* Style for the calendar dropdown */
+.mantine-DatePicker-calendar {
+  width: 200px;
+  height: 200px;
+}
+
