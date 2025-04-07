@@ -22,6 +22,7 @@ import "./globals.css";
 import { IconX } from "@tabler/icons-react";
 
 type Job = {
+  id:number;
   title: string;
   company: string;
   location: string;
