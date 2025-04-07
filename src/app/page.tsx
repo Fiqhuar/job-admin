@@ -19,6 +19,8 @@ import { useForm, Controller } from "react-hook-form";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "./globals.css";
+
+
 import { IconX } from "@tabler/icons-react";
 
 type Job = {
@@ -121,19 +123,22 @@ export default function JobDashboard() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-<nav className="navbar">
-  <div className="navbar-title">JobBoard</div>
-  <div className="navbar-links">
-    <a href="#">Home</a>
-    <a href="#">Find Jobs</a>
-    <a href="#">Find Talents</a>
-    <a href="#">About Us</a>
-    <a href="#">Testimonials</a>
+<nav className="custom-navbar">
+  <div className="custom-navbar-container">
+    <img src="../cybermindlogo.png" alt="Logo" className="navbar-logo" />
+    <div className="navbar-links">
+      <a href="#">Home</a>
+      <a href="#">Find Jobs</a>
+      <a href="#">Find Talents</a>
+      <a href="#">About us</a>
+      <a href="#">Testimonials</a>
+    </div>
+    <button className="navbar-button" onClick={() => setOpened(true)}>
+      Create Jobs
+    </button>
   </div>
-  <button className="navbar-button" onClick={() => setOpened(true)}>
-    Create Job
-  </button>
 </nav>
+
 
 
       <Container size="xl" className="py-8">
@@ -232,7 +237,7 @@ export default function JobDashboard() {
               .join(" ") + (job.description.split(" ").length > 20 ? "..." : "")}
           </p>
         </div>
-        <Button fullWidth size="sm" mt="md" radius="md">
+        <Button className="apply" fullWidth size="sm" mt="md" radius="md">
           Apply Now
         </Button>
       </Card>
@@ -290,6 +295,7 @@ export default function JobDashboard() {
           />
         )}
       />
+ 
       <Controller
         name="minSalary"
         control={control}
@@ -334,15 +340,22 @@ export default function JobDashboard() {
       }}
     />
   )}
+  
 />
+
+
     </div>
+    <div className=".mantine-Textarea-input">
     <Textarea
-      label="Job Description"
-      withAsterisk
-      mt="sm"
-      placeholder="Write job description here"
-      {...register("description", { required: true })}
-    />
+  label="Job Description"
+  withAsterisk
+  mt="sm"
+  placeholder="Write job description here"
+  minRows={10} // Increased from default to give more height
+  {...register("description", { required: true })}
+/>
+</div>
+
     <Group justify="space-between" mt="md">
       <Button variant="outline">Save Draft</Button>
       <Button type="submit" color="violet">
