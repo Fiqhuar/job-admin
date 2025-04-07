@@ -22,7 +22,7 @@ import "./globals.css";
 import { IconX } from "@tabler/icons-react";
 
 type Job = {
-  id:number;
+  id: number;
   title: string;
   company: string;
   location: string;
@@ -47,18 +47,39 @@ export default function JobDashboard() {
     fetchJobs();
   }, []);
 
+  // const fetchJobs = async () => {
+  //   try {
+  //     const response = await axios.get("http://localhost:5000/job");
+  //     // fetch(`${process.env.NEXT_PUBLIC_API_URL}/job`, ...)
+
+  //     setJobs(response.data);
+  //   } catch (error) {
+  //     console.error("Failed to fetch jobs", error);
+  //   }
+  // };
+
   const fetchJobs = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/job");
+      const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/job`);
       setJobs(response.data);
     } catch (error) {
       console.error("Failed to fetch jobs", error);
     }
   };
-
+  
+  // const onSubmit = async (data: Job) => {
+  //   try {
+  //     await axios.post("http://localhost:5000/job", data);
+  //     fetchJobs();
+  //     reset();
+  //     setOpened(false);
+  //   } catch (error) {
+  //     console.error("Error submitting job:", error);
+  //   }
+  // };
   const onSubmit = async (data: Job) => {
     try {
-      await axios.post("http://localhost:5000/job", data);
+      await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/job`, data);
       fetchJobs();
       reset();
       setOpened(false);
@@ -66,18 +87,27 @@ export default function JobDashboard() {
       console.error("Error submitting job:", error);
     }
   };
-
   
+  
+  // const handleDelete = async (job: Job) => {
+  //   try {
+  //     // Pass job.id instead of job.title
+  //     await axios.delete(`http://localhost:5000/job/${job.id}`);
+  //     fetchJobs(); // Refresh jobs after deletion
+  //   } catch (error) {
+  //     console.error("Failed to delete job:", error);
+  //   }
+  // };
+
   const handleDelete = async (job: Job) => {
     try {
-      // Pass job.id instead of job.title
-      await axios.delete(`http://localhost:5000/job/${job.id}`);
-      fetchJobs(); // Refresh jobs after deletion
+      await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/job/${job.id}`);
+      fetchJobs();
     } catch (error) {
       console.error("Failed to delete job:", error);
     }
   };
-
+  
   const filteredJobs = jobs.filter((job) => {
     const withinSalary =
       job.minSalary >= salaryRange[0] && job.maxSalary <= salaryRange[1];
