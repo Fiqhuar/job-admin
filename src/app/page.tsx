@@ -122,7 +122,7 @@ export default function JobDashboard() {
   });
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white-50">
 <nav className="custom-navbar">
   <div className="custom-navbar-container">
     <img src="../cybermindlogo.png" alt="Logo" className="navbar-logo" />
